@@ -23,7 +23,7 @@ exports.crearUsuario = async (req, res) => {
     usuario = new Usuario(req.body);
 
     // hashear el password
-    const salt = await bcryptjs.genSalt(10); 
+    const salt = await bcryptjs.genSalt(10);
     usuario.password = await bcryptjs.hash(password, salt);
 
     // Guardar usuario
@@ -32,18 +32,23 @@ exports.crearUsuario = async (req, res) => {
     // Crear y firmar el JWT
     const payload = {
       usuario: {
-        id: usuario.id
-      }
+        id: usuario.id,
+      },
     };
 
     // Firmar el JWT
-    jwt.sign(payload, process.env.SECRETA, {
-      expiresIn: 3600
-    }, (error, token) => {
-      if(error) throw error
-      // Mensaje de confirmación
-      res.json({token})
-    })
+    jwt.sign(
+      payload,
+      process.env.SECRETA,
+      {
+        expiresIn: 3600,
+      },
+      (error, token) => {
+        if (error) throw error;
+        // Mensaje de confirmación
+        res.json({ token });
+      }
+    );
 
     // // Mensaje de confirmacion
     // res.json({ msg: "Usuario creado correctamente" });
