@@ -10,7 +10,7 @@ const conectarDB = async () => {
       useNewUrlParser: true,
       autoIndex: false,
     });
-    console.log("DB conectada");
+    console.log("DB conectada ff");
   } catch (error) {
     console.log(error);
     process.exit(1);
