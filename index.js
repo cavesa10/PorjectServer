@@ -16,6 +16,7 @@ app.use(express.json({ extended: true }));
 
 // Puerto de la app
 const port = process.env.port || 4000;
+const host = '0.0.0.0'
 
 // importar Rutas
 app.use("/api/usuarios", require("./routes/usuarios"));
@@ -24,6 +25,6 @@ app.use("/api/proyectos", require("./routes/proyectos"));
 app.use("/api/tareas", require("./routes/tareas.js"));
 
 // Arrancar la app
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, host, () => {
   console.log(`El servidor está funcionando en el puerto ${port}`);
 });
