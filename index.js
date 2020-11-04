@@ -27,3 +27,7 @@ app.use("/api/tareas", require("./routes/tareas.js"));
 app.listen(port, '0.0.0.0', () => {
   console.log(`El servidor está funcionando en el puerto ${port}`);
 });
+
+app.get('/',(req,res) => {
+  res.send("This is a sample express app")
+})
